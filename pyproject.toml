@@ -1,6 +1,6 @@
 [project]
 name = "ingot-sql"
-version = "0.7.0.dev0"
+version = "0.7.0"
 description = "Typed tables and typical queries for SQL databases in Ingots, raw SQL at hand."
 readme = "README.md"
 requires-python = ">=3.14"
