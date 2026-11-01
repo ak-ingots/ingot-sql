@@ -197,7 +197,7 @@ wheels = [
 
 [[package]]
 name = "ingot-sql"
-version = "0.8.0"
+version = "0.8.1.dev0"
 source = { editable = "." }
 dependencies = [
     { name = "ingots" },
