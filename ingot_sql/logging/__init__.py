@@ -1,16 +1,16 @@
 """The logging unit of the defaults with the logger of the addon."""
 
-__all__ = ("SqlLogging",)
+__all__ = ("SqlLoggingUnit",)
 
 import typing as t
 
-from ingots.defaults.logging import Logging
+from ingots.defaults.logging import LoggingUnit
 
 if t.TYPE_CHECKING:
     from ..project import SqlProject
 
 
-class SqlLogging(Logging):
+class SqlLoggingUnit(LoggingUnit):
     """
     The logging unit, with the logger of the addon, ``ingot_sql``, at
     ``SQL_LOGGING_LEVEL``.

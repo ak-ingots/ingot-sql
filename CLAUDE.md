@@ -7,8 +7,8 @@ repeat what README or the ADRs say: link to them.
 
 `ingot-sql`: an addon of [Ingots](https://github.com/ak-ingots/ingots) for SQL
 databases. So far the skeleton: `SqlProject` (`project.py`) takes the addon's
-`SqlSettings` (`settings/`) with its `SqlConfigs` (`settings/configs.py`,
-named `SQL_*`) and its `SqlLogging` (`logging/`, the logger `ingot_sql`); a
+`SqlSettingsUnit` (`settings/`) with its `SqlConfigs` (`settings/configs.py`,
+named `SQL_*`) and its `SqlLoggingUnit` (`logging/`, the logger `ingot_sql`); a
 unit lives in the `__init__.py` of its package, as in `ingots.defaults`, and a
 class takes the prefix `Sql`, so that an application imports it under its own
 name. Next, tables that are their records too, typical queries compiled to SQL
