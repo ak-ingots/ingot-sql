@@ -7,8 +7,8 @@ from unittest import mock
 
 import ingot_sql
 from ingot_sql.__main__ import main
-from ingot_sql.logging import SqlLogging
-from ingot_sql.settings import SqlSettings
+from ingot_sql.logging import SqlLoggingUnit
+from ingot_sql.settings import SqlSettingsUnit
 from ingot_sql.settings.configs import SqlConfigs
 from ingots.defaults import Project
 from ingots.puer.cli import CommandRunner
@@ -31,9 +31,9 @@ class ProjectTestCase(unittest.TestCase):
 
     def test_the_project_extends_the_defaults(self) -> None:
         self.assertTrue(issubclass(ingot_sql.SqlProject, Project))
-        self.assertIs(ingot_sql.SqlProject.settings.cls, SqlSettings)
-        self.assertIs(ingot_sql.SqlProject.logging.cls, SqlLogging)
-        self.assertIs(SqlSettings.configs.cls, SqlConfigs)
+        self.assertIs(ingot_sql.SqlProject.settings.cls, SqlSettingsUnit)
+        self.assertIs(ingot_sql.SqlProject.logging.cls, SqlLoggingUnit)
+        self.assertIs(SqlSettingsUnit.configs.cls, SqlConfigs)
 
     def test_the_configs_of_the_addon_are_read(self) -> None:
         os.environ["INGOT_SQL_LOGGING_LEVEL"] = "debug"
