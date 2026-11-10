@@ -5,6 +5,12 @@ ingot-sql is rewritten from scratch starting with 0.7.0; versions up to
 
 <!-- towncrier release notes start -->
 
+## [0.9.0] - 2026-11-10
+### Changed
+- Moved on to ingots 0.33. The units of the addon are named by their kind, as
+  ADR 0014 of the ecosystem says: `SqlSettings` is `SqlSettingsUnit`,
+  `SqlLogging` `SqlLoggingUnit`.
+
 ## [0.8.0] - 2026-11-01
 ### Changed
 - Moved on to ingots 0.32.
