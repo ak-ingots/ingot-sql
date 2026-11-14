@@ -5,6 +5,10 @@ ingot-sql is rewritten from scratch starting with 0.7.0; versions up to
 
 <!-- towncrier release notes start -->
 
+## [0.10.0] - 2026-11-14
+### Changed
+- Moved on to ingots 0.34.
+
 ## [0.9.0] - 2026-11-10
 ### Changed
 - Moved on to ingots 0.33. The units of the addon are named by their kind, as
