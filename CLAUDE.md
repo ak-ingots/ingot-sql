@@ -1,22 +1,24 @@
 # CLAUDE.md
 
 Guidance for Claude Code in this repository. Keep it under 200 lines and do not
-repeat what README or the ADRs say: link to them.
+repeat what README, `docs/` or the ADRs say: link to them.
 
 ## What this is
 
 `ingot-sql`: an addon of [Ingots](https://github.com/ak-ingots/ingots) for SQL
-databases. So far the skeleton: `SqlProject` (`project.py`) takes the addon's
-`SqlSettingsUnit` (`settings/`) with its `SqlConfigs` (`settings/configs.py`,
-named `SQL_*`) and its `SqlLoggingUnit` (`logging/`, the logger `ingot_sql`); a
-unit lives in the `__init__.py` of its package, as in `ingots.defaults`, and a
-class takes the prefix `Sql`, so that an application imports it under its own
-name. Next, tables that are their records too, typical queries compiled to SQL
-you can read, raw SQL, and the base of the database addons. `python -m
-ingot_sql` runs the addon on its own (prefix `INGOT`). A library (ADR 0003),
-Python >= 3.14, part of the [ak-ingots](https://github.com/ak-ingots)
-ecosystem; the meta repository `ingots-libs` holds the ecosystem-wide
-decisions in `docs/adr/`.
+databases. So far the skeleton; next, tables that are their records too,
+typical queries compiled to SQL you can read, raw SQL, and the base of the
+database addons.
+A library (ADR 0003), Python >= 3.14, part of the
+[ak-ingots](https://github.com/ak-ingots) ecosystem; the meta repository
+`ingots-libs` holds the ecosystem-wide decisions in `docs/adr/`.
+
+## Layout
+
+- `project.py`: `SqlProject`, with `SqlSettingsUnit` (`settings/`, the
+  configs `SQL_*` in `settings/configs.py`) and `SqlLoggingUnit`
+  (`logging/`, the logger `ingot_sql`).
+- `python -m ingot_sql` runs the addon on its own (prefix `INGOT`).
 
 ## Commands
 
@@ -56,8 +58,9 @@ One test: `uv run python -m unittest tests.test_canary.CanaryTestCase`.
 - A release: a pull request sets the version (`uv version X.Y.Z`) and
   collates the changelog (`make cl-build VERSION=X.Y.Z`); after the merge,
   the tag `vX.Y.Z` on its commit starts the `release` workflow, which
-  publishes to TestPyPI, then to PyPI once the user approves the `pypi`
-  environment. Run by hand, the workflow rehearses on TestPyPI only.
+  publishes to TestPyPI, tests the package installed from it (the shared
+  workflow `index-test`), then publishes to PyPI once the user approves the
+  `pypi` environment. Run by hand, the workflow rehearses on TestPyPI only.
 
 ## Rules
 
@@ -81,10 +84,25 @@ One test: `uv run python -m unittest tests.test_canary.CanaryTestCase`.
   `.github/workflows/ci.yml`. Change them together.
 - CI runs exactly the `make` targets; a new check goes into `make check` and
   `ci.yml` together.
+- A comment tells what the code cannot: why it is so, a constraint from
+  outside (a bug of a library, a standard, a measure), a trap for the next
+  change. None repeats the code, a name, a docstring or what a key of a
+  config says, nor tells the history of a change: that is the commit's.
+  Reading it, one thinks "ah, so that's it"; a comment that gives no such
+  moment states the obvious and goes.
+- A TODO names its issue of GitHub, `# TODO(#42): ...`, of another
+  repository `# TODO(ak-ingots/ingots#42): ...`: one without an issue is
+  never done. No issue, no TODO: do it now, or open the issue first.
 - Code layout and naming follow ADR 0007; the PUER rules of `ingots` apply to
   an addon too: hooks start with an underscore and are overridden, not
   called; a protected member is touched only by its class, its subclasses
   and its own package.
+
+Of this package:
+
+- A unit lives in the `__init__.py` of its package, as in `ingots.defaults`,
+  and a class takes the prefix `Sql`, so that an application imports it
+  under its own name.
 
 ## Design
 
@@ -92,3 +110,4 @@ An addon extends the framework through slots and subclassing (ADR 0004) and
 ships contract tests that its consumers run (ADR 0005); design principles in
 ADR 0006. The settings it extends are documented in `ingots`:
 `docs/defaults/settings.md` and `docs/defaults/addon.md`.
+The design of the addon is `docs/design/sql-layer/` of the meta repository.
