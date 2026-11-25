@@ -10,6 +10,7 @@ authors = [{name = "Aliaksandr Karotki", email = "abkarotki@gmail.com"}]
 keywords = ["ingots", "sql", "database"]
 classifiers = [
     "Development Status :: 2 - Pre-Alpha",
+    "Framework :: AsyncIO",
     "Intended Audience :: Developers",
     "Operating System :: MacOS",
     "Operating System :: POSIX :: Linux",
@@ -17,13 +18,16 @@ classifiers = [
     "Programming Language :: Python :: 3 :: Only",
     "Programming Language :: Python :: 3.14",
     "Programming Language :: Python :: 3.15",
+    "Topic :: Database",
     "Typing :: Typed",
 ]
 dependencies = ["ingots>=0.34.0,<0.35"]
 
 [project.urls]
 repository = "https://github.com/ak-ingots/ingot-sql"
+issues = "https://github.com/ak-ingots/ingot-sql/issues"
 changelog = "https://github.com/ak-ingots/ingot-sql/blob/main/CHANGELOG.md"
+ecosystem = "https://github.com/ak-ingots/ingots-libs"
 
 [build-system]
 requires = ["uv_build>=0.13.5,<0.14"]

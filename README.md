@@ -1,5 +1,7 @@
 # ingot-sql
 
+[![PyPI](https://img.shields.io/pypi/v/ingot-sql.svg)](https://pypi.org/project/ingot-sql/)
+[![Python](https://img.shields.io/pypi/pyversions/ingot-sql.svg)](https://pypi.org/project/ingot-sql/)
 [![ci](https://github.com/ak-ingots/ingot-sql/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/ak-ingots/ingot-sql/actions/workflows/ci.yml)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/ak-ingots/ingot-sql/blob/main/LICENSE)
 
